@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Le Sorsa – Galleria</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <img src="le_sorsalogo.png" alt="Le Sorsa logo" class="logo">
+  <h1>Galleria</h1>
+  <nav>
+    <a href="index.html">Etusivu</a>
+    <a href="meista.html">Meistä</a>
+    <a href="menu.html">Menu</a>
+    <a href="yhteystiedot.html">Yhteystiedot</a>
+  </nav>
+</header>
+
+<section>
+  <h2>Kuvagalleria</h2>
+  <div class="galleria-ruudukko">
+    <img src="bistro1.jpg" alt="Ravintola ulkoa" class="galleria-kuva">
+    <img src="bistro2.jpg" alt="Ruokasali" class="galleria-kuva">
+    <img src="bistro3.jpg" alt="Keittiö" class="galleria-kuva">
+  </div>
+</section>
+  
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-sulje" id="lightbox-sulje">✕</span>
+  <img src="#" alt="" id="lightbox-kuva">
+</div>
+
+<footer>
+  © 2026 Le Sorsa
+</footer>
+
+<script>
+  const kuvat = document.querySelectorAll('.galleria-kuva');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxKuva = document.getElementById('lightbox-kuva');
+  const sulje = document.getElementById('lightbox-sulje');
+
+  kuvat.forEach(kuva => {
+    kuva.addEventListener('click', () => {
+      lightboxKuva.src = kuva.src;
+      lightboxKuva.alt = kuva.alt;
+      lightbox.classList.add('auki');
+    });
+  });
+
+  if (sulje) {
+    sulje.addEventListener('click', () => lightbox.classList.remove('auki'));
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('auki');
+    });
+  }
+</script>
+
+</body>
+</html>
+
